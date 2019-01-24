@@ -1,3 +1,5 @@
+# 𝕌𝕥𝕚𝕝𝕚𝕤𝕒𝕥𝕚𝕠𝕟 𝕕𝕖 𝕝𝕒 𝕤𝕥𝕒𝕔𝕜 𝕕𝕠𝕔𝕜𝕖𝕣 #
+
 ## Configurer l'environnement ##
 
 - éditer la config dans le fichier `.env`
