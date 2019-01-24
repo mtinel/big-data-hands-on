@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  jupyter:
+    image: jupyter/all-spark-notebook:87210526f381 # Jupyter 4.4.0 / JupyterLab 0.35.4
+    restart: always
+    container_name: jupyter
+    command: start.sh jupyter lab --NotebookApp.password=${JUPYTER_PASSWORD}
+    labels:
+      - "traefik.backend=jupyter"
+      - "traefik.jupyter.frontend.rule=Host:jupyter.${DOMAIN_NAME}.${DOMAIN_EXTENSION}"
+      - "traefik.jupyter.port=8888"
+      - "traefik.spark.frontend.rule=Host:jupyter.${DOMAIN_NAME}.${DOMAIN_EXTENSION};PathPrefixStrip:/spark"
+      - "traefik.spark.port=4041"
+    ports:
+      - 8888:8888
+      - 4041:4041
+    volumes:
+      - "${CONFIG_HOME}/jupyter/work:/home/jovyan/work"
+    networks:
+      - dev
+
+# Commands
+# use `start-notebook.sh` to start old view or `start.sh jupyter lab` to start in new fashion view
+# start without auth with `--NotebookApp.token=''`
+# start with a password (edit `.env` to set password) : `--NotebookApp.password=${JUPYTER_PASSWORD}`
+
+# Traefik
+# comments `ports` section to use with traefik
+
+# Create network with `docker network create dev_local`
+networks:
+  dev:
+    external:
+      name: dev_local
