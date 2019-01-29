@@ -21,6 +21,41 @@ Les métiers du Big Data
 Big Data Comment ?
 ==================
 
+## Architecture Lambda #
+Une architecture lambda se compose de 3 couches:
+- batch layer
+- speed layer
+- serving layer
+
+![lambda architecure](https://user.oc-static.com/upload/2017/12/14/15132725019668_lambda.jpeg "Architecture Lambda")
+
+### Batch layer
+Cette couche inclus :
+
+- master Dataset (stockage des données brutes). C'est la source de vérité
+- calculs distribués
+
+La master Dataset est contenu dans un data lake (grâce par ex. à HDFS).
+Afin d'éviter la corruption des données, on stocke le schéma des données avec elles.
+ex: JSON n'inclus pas le schéma alors que Apache Avro, oui.
+
+### Serving layer
+Cette couche doit supporter :
+
+- écriture par lot
+- lecture aléatoire
+
+Techniquement, il s'agit d'une base NoSQL parmis Cassandra, MongoDb, ElascticSearch,...
+Les base SQL ne passent pas à l'échelle horizontalement, et les base clé/valeur n'ont pas (en général) d'index.
+
+La serving layer est un vue des données traités par la batch layer.
+
+### Speed layer
+
+Dans cette couche, on stocke les données de façon dénormalisées et aggégés, pour un accès rapide.
+Les données sont effacées une fois disponibles, dans la serving layer.
+
+
 ## Langages ##
 
 - R (implementation de S issue des laboratoires Bell) utilisé par les statisticiens, data miner, data sctientist. Né en 93, 1ere release en 1995. Avangtage: Simpmlicité, utilisation possbile de librairies Python. Inconveniant: mauvaises performances.
