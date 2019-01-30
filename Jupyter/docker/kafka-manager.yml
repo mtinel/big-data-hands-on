@@ -1,0 +1,22 @@
+version: '3'
+services:
+  kafka_manager:
+    image: hlebalbau/kafka-manager:stable
+    restart: always 
+    ports:
+      - "9000:9000"
+    environment:
+      ZK_HOSTS: "localhost:2181"
+      APPLICATION_SECRET: "${KAFKA_MANAGER_SECRET}"
+    command: -Dpidfile.path=/dev/null
+    labels:
+      - "traefik.backend=kafka-manager"
+      - "traefik.frontend.rule=Host:kafka.${DOMAIN_NAME}.${DOMAIN_EXTENSION}"
+      - "traefik.port=9000"
+    networks:
+      - dev
+
+networks:
+  dev:
+    external:
+      name: dev_local

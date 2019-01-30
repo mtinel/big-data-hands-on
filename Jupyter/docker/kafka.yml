@@ -1,0 +1,23 @@
+version: '3'
+services:
+  kafka:
+    image: teivah/kafka:latest
+    container_name: kafka
+    hostname: kafka
+    environment:
+      ADVERTISED_PORT: 9092
+    expose:
+      - 9092 # kafka default port
+      - 2181 # zookeeper for client connections
+    ports:
+      - 9092:9092
+      - 2181:2181
+    labels:
+      - "traefik.enable=false"
+    networks:
+      - dev
+
+networks:
+  dev:
+    external:
+      name: dev_local
