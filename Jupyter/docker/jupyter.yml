@@ -11,10 +11,10 @@ services:
       - "traefik.jupyter.frontend.rule=Host:jupyter.${DOMAIN_NAME}.${DOMAIN_EXTENSION}"
       - "traefik.jupyter.port=8888"
       - "traefik.spark.frontend.rule=Host:jupyter.${DOMAIN_NAME}.${DOMAIN_EXTENSION};PathPrefixStrip:/spark"
-      - "traefik.spark.port=4041"
+      - "traefik.spark.port=4040"
     ports:
       - 8888:8888
-      - 4041:4041
+      - 4040:4040
     volumes:
       - "${CONFIG_HOME}/jupyter/work:/home/jovyan/work"
     networks:
