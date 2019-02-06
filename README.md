@@ -55,6 +55,23 @@ La serving layer est un vue des données traités par la batch layer.
 Dans cette couche, on stocke les données de façon dénormalisées et aggégés, pour un accès rapide.
 Les données sont effacées une fois disponibles, dans la serving layer.
 
+## Base de données
+
+D'après le théorème de CAP, formulé par Eric A. Brewer :
+> Dans toute base de données, vous ne pouvez respecter au plus que 2 propriétés parmi la cohérence, la disponibilité et la distribution.
+
+![triangleCAP](https://user.oc-static.com/upload/2017/05/26/14958217637026_triangleCAP.png "Triangle de CAP")
+
+### familles de bases NoSQL
+
+- clé/valeur : utilisé pour son efficacité et sa simplicité. Pas de langage de requête, il faut connaître la clé. Utilisations : détection de fraude en temps réel, IoT, e-commerce, gestion de cache, transactions rapides, fichiers de logs, chat.
+
+- colonnes (HBase, Spark SQL, Elastic Search, ...) : utilisé pour les traitements sur des colonnes comme les agrégats. Adaptée à de gros calculs analytiques. Utilisations : Comptage (vote en ligne, compteur, etc), journalisation, recherche de produits dans une catégorie, reporting à large échelle.
+
+- documents (MongoDB, Cassandra, ...): utilisé pour manipuler des documents avec une structure complexe. Utilisations : gestion de contenu (bibliothèques numériques, collections de produits, dépôts de logiciels, collections multimédia, etc.), framework stockant des objets, collection d’événements complexes, gestion des historiques d’utilisateurs sur réseaux sociaux.
+
+- graphes (Neo4j, OrientDB): utilisé pour résoudre les problèmes de corrélations entre les éléments. Utilisations : réseaux sociaux (recommandation, plus court chemin, cluster...), réseaux SIG (routes, réseau électrique, fret...), web social (Linked Data).
+
 
 ## Langages ##
 
@@ -69,8 +86,13 @@ Les données sont effacées une fois disponibles, dans la serving layer.
 - Rstudio (IDE pour R) execution sur un seul serveur
 - Tensorflow (ML lib for Python)
 - Apache Hadoop (applications distribuées)
+- Apache Storm (traitement de flux distribués)
 - Apache Spark (calcul distribué) API: Scala, Java, Python, R, Javascript ( projet indépendant [EclairJS](https://github.com/EclairJS/eclairjs) ). En moyenne 10x plus rapide que HDP Map Reduce et jusqu'à 100x si la RAM peut absorber toutes les données.
 - Apache Kafka Stream (pour des cas simples, pas de ML)
+
+### Apache Storm
+  
+Écrit en Clojure (dialect Lisp compilant en bytecode Java, javascript, ou bytecode .NET). Une *topology* (application Storm) traite des flux, en provenance de *Spouts* avec des *Bolts*, ou des micro-batch (avec le plugin Trident).
 
 ## Fonctionnement de Spark ##
 
