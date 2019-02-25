@@ -9,12 +9,6 @@
 docker network create dev_local
 ```
 
-## Utilisation sans Traefik ##
-
-```
-docker-compose -f jupyter.yml up
-```
-
 
 ## Utilisation avec Traefik sous Windows ##
 
@@ -40,6 +34,17 @@ docker-compose -f traefik.yml up
 ```
 Éditer le fichier `jupyter.yml` et commenter la section `ports`, puis
 
+
+## Démarrer Jupyter ##
+
+### Sous Windows ou MacOS ###
+
 ```
 docker-compose -f jupyter.yml up
+```
+
+### Sous Linux ###
+
+```
+docker-compose -f jupyter-linux.yml up
 ```
