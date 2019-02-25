@@ -6,7 +6,7 @@ services:
     ports:
       - "9000:9000"
     environment:
-      ZK_HOSTS: "localhost:2181"
+      ZK_HOSTS: "kafka:2181"
       APPLICATION_SECRET: "${KAFKA_MANAGER_SECRET}"
     command: -Dpidfile.path=/dev/null
     labels:
