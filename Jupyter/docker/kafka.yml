@@ -20,4 +20,4 @@ services:
 networks:
   dev:
     external:
-      name: dev_local
+      name: ${DEV_NETWORK_NAME}
