@@ -16,7 +16,10 @@ services:
       - 8888:8888
       - 4040:4040
     volumes:
-      - "${CONFIG_HOME}/jupyter/work:/home/jovyan/work"
+      - "${CONFIG_HOME}/Jupyter_volume:/home/jovyan/work"
+      # allow control parent docker on host from jupyter container
+      - "//var/run/docker.sock:/var/run/docker.sock"
+
     networks:
       - dev
 
