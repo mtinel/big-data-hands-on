@@ -2,7 +2,7 @@ version: '3'
 
 services:
   jupyter:
-    image: jupyter/all-spark-notebook:87210526f381 # Jupyter 4.4.0 / JupyterLab 0.35.4
+    image: jupyter/all-spark-notebook:7f1482f5a136 # Jupyter noteboook 5.7.2 / JupyterLab 0.35.4 / Spark 2.4.0 / Hadoop 2.7
     restart: always
     container_name: jupyter
     command: start.sh jupyter lab --NotebookApp.password=${JUPYTER_PASSWORD}
