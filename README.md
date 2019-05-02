@@ -218,9 +218,9 @@ Pour cela, on a 2 approches :
 
 #### Utiliser un algo linéaire pour résoudre un problème non-linéaire ####
 
-On peut redécrire les données dans un nouvel espace de redescription H (pour Hilbert) grâce à une application Φ (Phi, u03A6). L'espace de redescription sera généralement beaucoup plus grand que l'espace initial.
+On peut redécrire les données dans un nouvel espace de redescription H (pour Hilbert) grâce à une application [Φ](#Φ "Phi"). L'espace de redescription sera généralement beaucoup plus grand que l'espace initial.
 
-On peut également utiliser l'astuce du noyau (kernel trick), noté k,  afin d'éviter le calcul de Φ.
+On peut également utiliser l'astuce du noyau (kernel trick), noté k,  afin d'éviter le calcul de [Φ](#Φ "Phi").
 Il existe plusieurs types de noyaux (linéaire, polynomial, RBF, ...)
 
 ### Fonctionnement des algo ###
@@ -259,7 +259,7 @@ Il existe également la régression SVM aussi appelée SVR pour "Support Vector 
 Algo de classification, peu utilisé, car très coûteux. Il nécessite de garder en mémoire toutes les observations (memory-based).
 Il ne s'agit pas d'un algo paramétrique, donc pas d'apprentissage. Il associe à une observation la même étiquette que la majorité de ses k plus proches points d'entrainement. On fera varier k (hyperparamètre) pour obtenir la plus faible erreur.
 
-Note: On parle d'hyperparamètre lorsqu'il s'agit d'un paramètre de l'algorithme d'apprentissage, et de paramètre (souvant noté 𝜽), lorsqu'il s'agit d'un paramètre du modèle, trouvé par apprentissage.
+Note: On parle d'hyperparamètre lorsqu'il s'agit d'un paramètre de l'algorithme d'apprentissage, et de paramètre (souvant noté [𝜽](#𝜽 "theta")), lorsqu'il s'agit d'un paramètre du modèle, trouvé par apprentissage.
 
 #### K-moyennes (K-means) ####
 
@@ -404,7 +404,7 @@ Avant d'entrainer le modèle, on divise le jeu de données en portions. Le train
 - Expectation-maximization (EM): Clustering observed and latent features
 - Principal components analysis (PCA): Reducing the dimension of the model
 
-La création d'un modèle supervisé se fait par optimisation des paramètres notés '𝜽'(theta, U+1D73D) de l'ago choisi. L'optimisation consiste à converger vers le minimum de la fonction loss (perte d'information), en prenant par exemple, la distance euclidienne. Pour cela, on peut minimiser le risque empirique (somme des erreurs constatés), ou maximiser la vraissemblance.
+La création d'un modèle supervisé se fait par optimisation des paramètres notés [𝜽](#𝜽 "theta") de l'ago choisi. L'optimisation consiste à converger vers le minimum de la fonction loss (perte d'information), en prenant par exemple, la distance euclidienne. Pour cela, on peut minimiser le risque empirique (somme des erreurs constatés), ou maximiser la vraissemblance.
 
 #### Bias-variance tradeoff ####
 
@@ -493,3 +493,16 @@ Pour suivre les cours d'Open Classrooms (OC) sur le Machine Learning, des base e
 S'entrainer avec Kaggle. Selon Wikipédia :
 > [Kaggle](https://www.kaggle.com/) est une plateforme web organisant des compétitions en science des données. Sur cette plateforme, les entreprises proposent des problèmes en science des données et offrent un prix aux datalogistes obtenant les meilleures performances.
 Kaggle permet également d'obtenir des jeux de données sans concourir à une compétition.
+
+
+Annexe
+======
+
+## Codes UTF-8 des symboles
+
+- <a name="𝜽">𝜽</a>: theta, U+1D73D
+- <a name="Φ">Φ</a>: Phi, u03A6
+- <a name="Σ">Σ</a>: sigma, u3A3
+- <a name="√">√</a>: racine carrée, u221A
+- <a name="ȳ">ȳ</a>: y macron, u0233
+- <a name="÷">÷</a>: signe division, u00F7
