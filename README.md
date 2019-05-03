@@ -52,7 +52,7 @@ La serving layer est un vue des données traités par la batch layer.
 
 ### Speed layer
 
-Dans cette couche, on stocke les données de façon dénormalisées et aggégés, pour un accès rapide.
+Dans cette couche, on stocke les données de façon dénormalisées et aggrégés, pour un accès rapide.
 Les données sont effacées une fois disponibles, dans la serving layer.
 
 ## Base de données
@@ -73,7 +73,7 @@ D'après le théorème de CAP, formulé par Eric A. Brewer :
 - graphes (Neo4j, OrientDB): utilisé pour résoudre les problèmes de corrélations entre les éléments. Utilisations : réseaux sociaux (recommandation, plus court chemin, cluster...), réseaux SIG (routes, réseau électrique, fret...), web social (Linked Data).
 
 
-## Langages ##
+## Principaux langages utilisés ##
 
 - R (implementation de S issue des laboratoires Bell) utilisé par les statisticiens, data miner, data sctientist. Né en 93, 1ere release en 1995. Avangtage: Simpmlicité, utilisation possbile de librairies Python. Inconveniant: mauvaises performances.
 - Python. 1ere release 1991. Avantage: nombreuses bibliothèques de ML, ainsi qu'utilisation possible des bibliotheques R. Inconveniant : performance inférieure à Scala.
@@ -92,7 +92,7 @@ D'après le théorème de CAP, formulé par Eric A. Brewer :
 
 ### Apache Storm
   
-Écrit en Clojure (dialect Lisp compilant en bytecode Java, javascript, ou bytecode .NET). Une *topology* (application Storm) traite des flux, en provenance de *Spouts* avec des *Bolts*, ou des micro-batch (avec le plugin Trident).
+Écrit en Clojure (dialect Lisp compilant en bytecode Java, javascript, ou bytecode .NET). Une *topology* (application Storm) traite des flux, en provenance de *Spouts* avec des *Bolts* (workers), ou des micro-batch (avec le plugin Trident).
 
 ## Fonctionnement de Spark ##
 
@@ -346,7 +346,8 @@ Pour réduire le nombre de features, on peut soit retrouver les dimensions princ
 
 La réduction de dimension permet de résoudre plusieurs problématiques :
 - le fléau de la dimension (curse of dimensionality), qui est la difficulté d'apprentissage en haute dimension.
-- la visualisation des données. Il difficile de lire un graphique au delà de 3-4 dimensions- la réduction des coûts de calcul, de stockage et d'acquisition des données.
+- la visualisation des données. Il difficile de lire un graphique au delà de 3-4 dimensions
+- la réduction des coûts de calcul, de stockage et d'acquisition des données.
  
 ##### Analyse de données textuelles #####
 
@@ -460,6 +461,22 @@ Pour sélectionner les valeurs des hyperparamètres, on fait un grid search, afi
 
 ### 4. Ajustement du modèle ###
 
+- lorsque le modèle donne de mauvais résultats sur les données de d'entrainement, on a sous-ajustement des données (underfitting). Le modèle n'a pas réussi à saisir la relation entre les features et les labels.
+
+- lorsque le modèle effectue une bonne préduction sur les données d'entrainement, mais ne résussi pas sur de nouvelles données, on a un sur-ajustement (overfittting). Le modèle n'a pas réussi à généraliser.
+
+- lorsque le modèle est mauvais, à la fois, sur les données d'entrainement et de test, on vérifiera que la quantité de données est suffisante pour capter la complexité du modèle.
+
+
+#### Underfitting
+
+Face à un sous-ajustement, on essaiera d'ajouter de nouvelles features, ou de trouver des features plus représentatives. On pourra également diminuer le degré de régularisation.
+
+#### Overfitting
+
+Face à un sur-ajustement, on utilisera moins de features. Et, on augmentera le degré de régularisation.
+
+
 ### 5. Utilisation du modèle ###
 
 ## Se former ##
@@ -502,7 +519,7 @@ Annexe
 
 - <a name="𝜽">𝜽</a>: theta, U+1D73D
 - <a name="Φ">Φ</a>: Phi, u03A6
-- <a name="Σ">Σ</a>: sigma, u3A3
+- <a name="Σ">Σ</a>: sigma (somme), u3A3
 - <a name="√">√</a>: racine carrée, u221A
-- <a name="ȳ">ȳ</a>: y macron, u0233
+- <a name="ȳ">ȳ</a>: y surligné (moyenne), u0233
 - <a name="÷">÷</a>: signe division, u00F7
