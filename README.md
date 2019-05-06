@@ -479,6 +479,10 @@ Face à un sur-ajustement, on utilisera moins de features. Et, on augmentera le 
 
 ### 5. Utilisation du modèle ###
 
+Une fois le modèle créé, on peut réaliser des prédictions sur de nouvelles données.
+Ces données doivent être préparés pour pouvoir être traitées par le modèle, de la même façon que les données d'entrainement pour constuire le modèle.
+
+
 ## Se former ##
 
 ### Se former de zéro ###
@@ -504,8 +508,8 @@ Pour suivre les cours d'Open Classrooms (OC) sur le Machine Learning, des base e
 5. [Utilisez des modèles supervisés non linéaires (OC)](https://openclassrooms.com/courses/utilisez-des-modeles-supervises-non-lineaires)
 
 6. [Modélisez vos données avec les méthodes ensemblistes (OC)](https://openclassrooms.com/fr/courses/4470521-modelisez-vos-donnees-avec-les-methodes-ensemblistes)
-### S'exercer ###
 
+### S'exercer ###
 
 S'entrainer avec Kaggle. Selon Wikipédia :
 > [Kaggle](https://www.kaggle.com/) est une plateforme web organisant des compétitions en science des données. Sur cette plateforme, les entreprises proposent des problèmes en science des données et offrent un prix aux datalogistes obtenant les meilleures performances.
