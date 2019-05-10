@@ -110,6 +110,20 @@ Spark est réparti entre un (ou plusieurs) driver et des workers
 Le driver est responsable de l'execution d'une app (le main), et délegue l'execution des calculs (les fonctions) aux workers via les libs fournis.
 Libs Spark: Spark SQL, Spark Streaming, Spark GraphX, Spark MLlib
 
+### Hardware tunning
+
+Pour un fonctionnement optimisé de Spark, il faut ajuster la config hardware.
+Ça consiste à définir le nombre de coeurs par exécuteur, le nombre d'exécuteur, et la mémoire par exécuteur.
+
+- 1er cas : Beaucoup d'exécuteurs avec 1 coeur par exécuteur posera des problème de partage dans la même JVM (broadcasting vars, accumulateurs,..), et de dépassement mémoire pour le traitement d'une partition.
+- 2e cas : Peu d'exécuteurs avec beaucoup de RAM posera des problèmes de GC (longues pauses) et de performances HDFS (gestion simultanée de trop de threads).
+
+En moyenne, 5/6 coeurs par exécuteur est un bon équilibre. On laissera 10% de RAM par noeud, et un exécuteur pour le driver.
+On peut également utiliser l'allocation dynamique des resources pour définir des min et max et laisser Spark s'adapter.
+
+Pour monitorer / tunner Spark on peut utiliser [Dr. Elephant](https://github.com/linkedin/dr-elephant), open sourcé par LinkedIn.
+
+
 ## Se former ##
 
 - Apprendre Scala : [Programming in Scala, 3rd Edition](https://libgen.pw/download/book/5a1f058c3a044650f51255eb)
