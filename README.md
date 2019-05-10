@@ -39,6 +39,14 @@ La master Dataset est contenu dans un data lake (grâce par ex. à HDFS).
 Afin d'éviter la corruption des données, on stocke le schéma des données avec elles.
 ex: JSON n'inclus pas le schéma alors que Apache Avro, oui.
 
+#### Formats de stockage
+
+Les formats suivants sont binaires, compréssés, et contiennent le schéma des données à lintérieur du fichier :
+- Apache Parquet : stockage binaire partitionnable (distribution des gros fichiers sur plusieurs machines), orienté colonne. Puisqu'il est orienté colonne, il est optimisé pour une forte charge en lecture.
+- Apache Avro : stockage binaire partitionnable, orienté ligne. Optimisé pour une forte charge en écriture. Supporte mieux l'évolution du schéma.
+
+Une compression avec [Snappy](https://google.github.io/snappy/), basée sur les concepts de [LZ77](https://fr.wikipedia.org/wiki/LZ77) (compression par dictionnaire) et développé par Google, permet d'obtenir un gain de place tout en conservant de bonnes performances.
+
 ### Serving layer
 Cette couche doit supporter :
 
